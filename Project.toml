@@ -1,9 +1,13 @@
 name = "BlobDetection"
 uuid = "b9b9df36-df81-4d1f-9383-9378060e8564"
 authors = ["Riccardo Foffi <riccardo.foffi@protonmail.com> and contributors"]
-version = "1.0.0-DEV"
+version = "0.0.1"
+
+[deps]
+ImageFiltering = "6a3955dd-da59-5b1f-98d4-e7296123deb5"
 
 [compat]
+ImageFiltering = "0.7"
 julia = "1"
 
 [extras]
