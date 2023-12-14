@@ -46,7 +46,7 @@ function detect_blobs(img::AbstractArray{T,N}, σscales;
     end
     sigmas = sort(σscales)
     # apply LoG filter for each scale
-    img_LoG = multi_LoG(img, sigmas, σshape)
+    img_LoG = multiLoG(img, sigmas, σshape)
     colons = ntuple(d -> Colon(), Val(N))
     maxima = findlocalmaxima(img_LoG; edges)
     if !iszero(rthresh)
@@ -64,7 +64,7 @@ function detect_blobs(img::AbstractArray{T,N}, σscales;
     end
 end
 
-function multi_LoG(img::AbstractArray{T,N}, sigmas, σshape) where {T,N}
+function multiLoG(img::AbstractArray{T,N}, sigmas, σshape) where {T,N}
     issorted(sigmas) || error("sigmas must be sorted")
     img_LoG = similar(img, float(eltype(T)), (Base.OneTo(length(sigmas)), axes(img)...))
     colons = ntuple(d -> Colon(), Val(N))
